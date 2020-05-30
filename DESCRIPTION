@@ -1,0 +1,42 @@
+Package: SiteOpt
+Title: SiteOpt: an Open-source R-package for Site Selection Optimization in Conservation Planning
+Version: 1.0.0
+Authors@R: 
+    c(
+    person(given = "Payman",
+           family = "Ghasemi Saghand",
+           role = c("aut", "cre"),
+           email = "payman@usf.edu",
+           comment = c(ORCID = "0000-0003-3133-0953")),
+    person(given = "Zulqarnain",
+           family = "Haider",
+           role = c("ctb")),
+    person(given = "Hadi",
+           family = "Charkhgard",
+           role = c("ctb")),
+    person(given = "Mitchell",
+           family = "Eaton",
+           role = c("ctb")),
+    person(given = "Julien",
+           family = "Martin",
+           role = c("ctb")),
+    person(given = "Simeon",
+           family = "Yurek",
+           role = c("ctb")),
+    person(given = "Bradley",
+           family = "J. Udell",
+           role = c("ctb")),
+    person("University of South Florida (USF)", role="cph"))
+Description: xxx.
+License: file LICENSE
+Copyright: file COPYRIGHTS
+Encoding: UTF-8
+LazyData: true
+Imports:
+  readxl (>= 1.3.1),
+  JuliaCall (>= 0.17.1),
+  stats,
+  utils
+RoxygenNote: 7.1.0
+Roxygen: list(markdown = TRUE)
+
