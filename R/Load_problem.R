@@ -47,6 +47,7 @@
 #'
 #' @export
 Load_Problem<-function(First_Objective=0, Second_Objective=0, Risk_Objective=0, Solver="SCIP", Silence= FALSE, Env= .GlobalEnv){
+  cat("You are using SiteOpt Academic license - for non-comercial use only. (https://bit.ly/2TTjQzP)\n" )
   ################
   #    Errors    #
   ################
