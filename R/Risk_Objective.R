@@ -178,12 +178,12 @@ Risk_Objective_Create <- function(Parcels, Sigma, Correlation, Silence=FALSE, En
   Temp_cov_names <-
     setNames(as.integer(1:length(Env$Parcels)), Parcels)
 
-  Risk_Objective[["Correlation"]] <-
+  Env$Risk_Objective[["Correlation"]] <-
     matrix(as.double(), nrow = length(Env$Parcels), ncol = length(Env$Parcels))
 
   for (i in 1:length(Env$Parcels)) {
     for (j in 1:length(Env$Parcels)) {
-      Risk_Objective[["Correlation"]][i, j] <-
+      Env$Risk_Objective[["Correlation"]][i, j] <-
         as.double(Correlation[Temp_cov_names[Env$Parcels[i]], Temp_cov_names[Env$Parcels[j]]])
 
     }
