@@ -180,7 +180,7 @@ Risk_Objective_Create <- function(Parcels, Sigma, Correlation, Silence=FALSE, En
   Correlation<-Correlation[,order(as.integer(colnames(Correlation)))]
   rownames(Correlation)<-NULL
   colnames(Correlation)<-NULL
-  Env$Risk_Objective[["Correlation"]] <-Correlation
+  Env$Risk_Objective[["Correlation"]] <-as.matrix(apply(Correlation,c(1,2),FUN = as.double))
 
 
 

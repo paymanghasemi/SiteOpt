@@ -77,8 +77,8 @@ Load_Problem<-function(First_Objective=0, Second_Objective=0, Risk_Objective=0, 
   julia <- julia_setup()
   julia_library("JuMP")
   julia_library(Solver)
-  julia_assign("Parcel_Status",Env$Status)
-  julia_assign("N_Parcels",length(Env$Parcels))
+  julia_assign("Parcel_Status",as.integer(Env$Status))
+  julia_assign("N_Parcels",as.integer(length(Env$Parcels)))
   julia_assign("N_Objectives",as.integer(2))
   julia_assign("Error","Error!!!!")
   julia_assign('N_protected', as.integer(sum(Env$Status)))
@@ -218,17 +218,17 @@ Load_Problem<-function(First_Objective=0, Second_Objective=0, Risk_Objective=0, 
 }
 
 .First_objective_creator<-function(Env){
-  julia_assign("First_Objective_Coefficients",Env$First_Objective[["Coefficients"]])
+  julia_assign("First_Objective_Coefficients",as.double(Env$First_Objective[["Coefficients"]]))
   julia_command(" First_Objective=@expression(model, sum(First_Objective_Coefficients[i]*Dict_Variables[i] for i=1:N_Parcels ));")
 }
 
 .Second_objective_creator<-function(Env){
-  julia_assign("Second_Objective_Coefficients",Env$Second_Objective[["Coefficients"]])
+  julia_assign("Second_Objective_Coefficients",as.double(Env$Second_Objective[["Coefficients"]]))
   julia_command(" Second_Objective=@expression(model, sum(Second_Objective_Coefficients[i]*Dict_Variables[i] for i=1:N_Parcels ));")
 }
 
 .Risk_objective_creator<-function(Env){
-    julia_assign("Parcel_Sigma",Env$Risk_Objective[["Sigma"]])
-    julia_assign("Parcel_correlation",Env$Risk_Objective[["Correlation"]])
+    julia_assign("Parcel_Sigma",as.double(Env$Risk_Objective[["Sigma"]]))
+    julia_assign("Parcel_correlation",as.matrix(apply(Env$Risk_Objective[["Correlation"]],MARGIN = c(1,2),FUN=as.double)))
     julia_command(" Risk_Objective=@expression(model,sum((Parcel_Sigma[i]^2)*Dict_Variables[i] for i=1:N_Parcels) + 2*sum(Parcel_Sigma[i]*Dict_Variables[i]*sum(Parcel_correlation[i,j]*Parcel_Sigma[j]*Dict_Variables[j] for j=(i+1):N_Parcels ) for i=1:N_Parcels));")
 }

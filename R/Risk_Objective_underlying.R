@@ -31,6 +31,7 @@
   my_data<-my_data[,2]
   my_data<-my_data[order(as.integer(names(my_data)))]
   names(my_data)<-NULL
+  my_data<-as.double(my_data)
   ################
   #    Reports   #
   ################
@@ -95,7 +96,7 @@
     my_data<-my_data[,order(as.integer(colnames(my_data)))]
     rownames(my_data)<-NULL
     colnames(my_data)<-NULL
-
+    my_data<-as.matrix(apply(my_data,c(1,2),FUN = as.double))
     ################
     #    Reports   #
     ################
