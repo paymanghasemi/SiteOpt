@@ -174,20 +174,14 @@ Risk_Objective_Create <- function(Parcels, Sigma, Correlation, Silence=FALSE, En
   Env$Risk_Objective[["Sigma"]][match(Parcels,Env$Parcels)] <-
     as.double(Sigma)
 
+  rownames(Correlation)<-match(Parcels,Env$Parcels)
+  colnames(Correlation)<-match(Parcels,Env$Parcels)
+  Correlation<-Correlation[order(as.integer(rownames(Correlation))),]
+  Correlation<-Correlation[,order(as.integer(colnames(Correlation)))]
+  rownames(Correlation)<-NULL
+  colnames(Correlation)<-NULL
+  Env$Risk_Objective[["Correlation"]] <-Correlation
 
-  Temp_cov_names <-
-    setNames(as.integer(1:length(Env$Parcels)), Parcels)
-
-  Env$Risk_Objective[["Correlation"]] <-
-    matrix(as.double(), nrow = length(Env$Parcels), ncol = length(Env$Parcels))
-
-  for (i in 1:length(Env$Parcels)) {
-    for (j in 1:length(Env$Parcels)) {
-      Env$Risk_Objective[["Correlation"]][i, j] <-
-        as.double(Correlation[Temp_cov_names[Env$Parcels[i]], Temp_cov_names[Env$Parcels[j]]])
-
-    }
-  }
 
 
   ################
@@ -210,7 +204,7 @@ Risk_Objective_Create <- function(Parcels, Sigma, Correlation, Silence=FALSE, En
         " and ",
         Env$Parcels[length(Env$Parcels)],
         " is ",
-        Correlation[1,length(Env$Parcels)],
+        Env$Risk_Objective[["Correlation"]][1,length(Env$Parcels)],
         ".\n"
     )
     cat('Creating Risk Objective Completed.')

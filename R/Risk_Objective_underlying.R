@@ -27,11 +27,10 @@
   ################
   #     Body     #
   ################
-  Temp_sigma<- rep(0, length(Env$Parcels))
-  Temp_sigma[match(as.character(my_data[, 1]),Env$Parcels)] <-
-    as.double(my_data[, 2])
-
-
+  rownames(my_data)<-match(my_data[,1],Env$Parcels)
+  my_data<-my_data[,2]
+  my_data<-my_data[order(as.integer(names(my_data)))]
+  names(my_data)<-NULL
   ################
   #    Reports   #
   ################
@@ -43,13 +42,13 @@
       " and ",
       Env$Parcels[length(Env$Parcels)],
       " are ",
-      Temp_sigma[1],
+      my_data[1],
       " and ",
-      Temp_sigma[length(Env$Parcels)],
+      my_data[length(Env$Parcels)],
       ".\n"
     )
   }
-  return(Temp_sigma)
+  return(my_data)
 }
 
 
@@ -89,24 +88,13 @@
     ################
     #     Body     #
     ################
-
-
-    Temp_cov_names <-
-      setNames(as.integer(1:length(Env$Parcels)), my_data[, 1])
-
-    Temp_cov <- my_data[, 2:(1 + length(Env$Parcels))]
-
-    Parcel_correlation <-
-      matrix(as.double(), nrow = length(Env$Parcels), ncol = length(Env$Parcels))
-
-    for (i in 1:length(Env$Parcels)) {
-      for (j in 1:length(Env$Parcels)) {
-        Parcel_correlation[i, j] <-
-          as.double(Temp_cov[Temp_cov_names[Env$Parcels[i]], Temp_cov_names[Env$Parcels[j]]])
-
-      }
-    }
-
+    rownames(my_data)<-match(my_data[,1],Env$Parcels)
+    my_data<-my_data[,2:ncol(my_data)]
+    colnames(my_data)<-rownames(my_data)
+    my_data<-my_data[order(as.integer(rownames(my_data))),]
+    my_data<-my_data[,order(as.integer(colnames(my_data)))]
+    rownames(my_data)<-NULL
+    colnames(my_data)<-NULL
 
     ################
     #    Reports   #
@@ -119,12 +107,12 @@
         " , ",
         Env$Parcels[length(Env$Parcels)],
         "} is ",
-        Parcel_correlation[1, length(Env$Parcels)],
+        my_data[1, length(Env$Parcels)],
         "\n"
       )
     }
 
-    return(Parcel_correlation)
+    return(my_data)
   }
 
 
