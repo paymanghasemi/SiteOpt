@@ -86,7 +86,7 @@ Optimize_WSO<-function(First_Objective=0, Second_Objective=0, Risk_Objective=0, 
   ################
   #     Body     #
   ################
-  Load_Problem(First_Objective= (First_Objective>0), Second_Objective= (Second_Objective>0), Risk_Objective = (Risk_Objective>0), Solver, Silence, Env = Env);
+  Load_Problem(First_Objective= First_Objective, Second_Objective= Second_Objective, Risk_Objective = Risk_Objective,Solver= Solver,Silence= Silence, Env = Env);
   if(Silence==TRUE){
     julia_command('set_silent(model);')
   }
@@ -96,7 +96,7 @@ Optimize_WSO<-function(First_Objective=0, Second_Objective=0, Risk_Objective=0, 
   ################
 
 
-  Optimization<- .WSO_delegate(First_Objective,Second_Objective,Risk_Objective,Time_limit, Silence, Env= Env)
+  Optimization<- .WSO_delegate(First_power= First_Objective, Second_power= Second_Objective, Risk_power = Risk_Objective,Time_limit = Time_limit,Silence =  Silence, Env= Env)
 
   ################
   #    Reports   #
@@ -126,19 +126,19 @@ Optimize_WSO<-function(First_Objective=0, Second_Objective=0, Risk_Objective=0, 
       cat("First Objective and Second Objective.\n")}
     return(.WSO_Optimizer(Name_1 = "First_Objective",Sense_1 = Env$First_Objective[["Sense"]],
                           Weight_1=First_power, Name_2 = "Second_Objective",
-                          Sense_2 = Env$Second_Objective[["Sense"]],Weight_2=Second_power, Time_limit))
+                          Sense_2 = Env$Second_Objective[["Sense"]],Weight_2=Second_power, Time_limit= Time_limit))
   }else if(First_power * Risk_power >0){
     if(Silence==FALSE){
       cat("First Objective and Risk Objective.\n")}
     return(.WSO_Optimizer(Name_1 = "First_Objective",Sense_1 = Env$First_Objective[["Sense"]],
                           Weight_1=First_power, Name_2 = "Risk_Objective", Sense_2 = "Min",
-                          Weight_2=Risk_power, Time_limit))
+                          Weight_2=Risk_power, Time_limit= Time_limit))
   }else if(Second_power*Risk_power>0){
     if(Silence==FALSE){
       cat("Second Objective and Risk Objective.\n")}
     return(.WSO_Optimizer(Name_1 = "Second_Objective",Sense_1 = Env$Second_Objective[["Sense"]],
                           Weight_1=Second_power, Name_2 = "Risk_Objective", Sense_2 = "Min",
-                          Weight_2=Risk_power, Time_limit))
+                          Weight_2=Risk_power, Time_limit= Time_limit))
   }
 }
 

@@ -11,7 +11,6 @@
   julia_assign('First_nadir',"N/A")
   julia_assign('Second_nadir',"N/A")
 
-
   if(Sense_1=="Max"){
     julia_command(paste("@objective(model, Max,", Name_1,");",sep=''))
   }else{
@@ -19,7 +18,7 @@
   }
 
 
-  Optimization<-.optimize(Time_limit,Skip_solution=1)
+  Optimization<-.optimize(Time_limit= Time_limit,Skip_solution=1)
   Time_limit = Time_limit - Optimization[["Solution_time"]]
   if(Optimization[["Status"]]!="OPTIMAL"){
     warning('Error: Could not optimize ', Name_1,' to Optimality. \n')
@@ -57,11 +56,10 @@
     julia_command(paste("@constraint(model,Temp_First_optimal,", Name_1," <= First_optimal);",sep=''))
   }
 
-
   if(Name_2=="Risk_Objective"){
-    Optimization<-.Nash_for_Risk(Name_1, Sense_1, Name_2, Time_limit, Initial_time_limit);
+    Optimization<-.Nash_for_Risk(Name_1 = Name_1,Sense_1 =  Sense_1, Name_2 = Name_2,Time_limit =  Time_limit,Initial_time_limit =  Initial_time_limit);
   }else{
-    Optimization<-.Nash_for_LP(Name_1, Sense_1, Name_2, Sense_2, Time_limit, Initial_time_limit);
+    Optimization<-.Nash_for_LP(Name_1 = Name_1,Sense_1 =  Sense_1, Name_2 = Name_2,Sense_2 =  Sense_2, Time_limit =  Time_limit,Initial_time_limit =  Initial_time_limit);
   }
   if(length(Optimization)!=1){
     Optimization[["Ideal"]]=list()
@@ -106,7 +104,7 @@
         end
     end;")
 
-  Optimization<-.optimize(Time_limit,Skip_solution=0)
+  Optimization<-.optimize(Time_limit= Time_limit,Skip_solution=0)
   Time_limit = Time_limit - Optimization[["Solution_time"]]
   if(Optimization[["Gap"]]!=-1){
     Optimization[[Name_1]]=julia_eval(paste('value(',Name_1,')'))
@@ -131,7 +129,7 @@
   julia_command("@variable(model, var_risk);")
   julia_command("Temp_Risk_variable=@constraint(model,var_risk - Risk_Objective >=0);")
   julia_command("@objective(model, Min, var_risk);")
-  Optimization<-.optimize(Time_limit,Skip_solution=1)
+  Optimization<-.optimize(Time_limit= Time_limit,Skip_solution=1)
   Time_limit = Time_limit - Optimization[["Solution_time"]]
   if(Optimization[["Status"]]!="OPTIMAL"){
     warning('Error: Could not optimize Risk_Objective subject to ', Name_1,' to Optimality. \n');
@@ -173,7 +171,7 @@
     julia_command("@objective(model, Max, Second_Objective);")
   }else{
   julia_command("@objective(model, Min, Second_Objective);")}
-  Optimization<-.optimize(Time_limit,Skip_solution=1)
+  Optimization<-.optimize(Time_limit=Time_limit,Skip_solution=1)
   Time_limit = Time_limit - Optimization[["Solution_time"]]
   if(Optimization[["Status"]]!="OPTIMAL"){
     warning('Error: Could not optimize Second_Objective subject to First_Objective to Optimality. \n')
@@ -199,7 +197,7 @@
     julia_command("@objective(model, Max, Second_Objective);")
   }else{
     julia_command("@objective(model, Min, Second_Objective);")}
-  Optimization<-.optimize(Time_limit,Skip_solution=1)
+  Optimization<-.optimize(Time_limit= Time_limit,Skip_solution=1)
   Time_limit = Time_limit - Optimization[["Solution_time"]]
   if(Optimization[["Status"]]!="OPTIMAL"){
     warning('Error: Could not optimize Second_Objective to Optimality. \n')
@@ -231,7 +229,7 @@
   }
 
 
-  Optimization<-.optimize(Time_limit,Skip_solution=1)
+  Optimization<-.optimize(Time_limit= Time_limit,Skip_solution=1)
   Time_limit = Time_limit - Optimization[["Solution_time"]]
   if(Optimization[["Status"]]!="OPTIMAL"){
     warning('Error: Could not optimize First_Objective subject to Second_Objective to Optimality. \n')

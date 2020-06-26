@@ -49,7 +49,7 @@ Optimize_First_Objective<- function(Time_limit=1e7, Solver="SCIP", Silence= FALS
   #     Body     #
   ################
 
-  Load_Problem(First_Objective=1 ,Solver,Silence,Env = Env);
+  Load_Problem(First_Objective=1 ,Solver= Solver,Silence= Silence,Env = Env);
 
   ################
   #    Reports   #
@@ -69,7 +69,7 @@ Optimize_First_Objective<- function(Time_limit=1e7, Solver="SCIP", Silence= FALS
     julia_command("@objective(model, Min, First_Objective);")
   }
 
-  Optimization<-.optimize(Time_limit);
+  Optimization<-.optimize(Time_limit= Time_limit,Skip_solution = 0);
   if(Optimization[["Gap"]]!=-1){
     Optimization[["Objective_Value"]]=julia_eval('objective_value(model)')}else{
       Optimization[["Objective_Value"]]="N/A";
@@ -149,7 +149,7 @@ Optimize_Second_Objective<- function(Time_limit=1e7, Solver="SCIP", Silence= FAL
   #     Body     #
   ################
 
-  Load_Problem(Second_Objective=1 ,Solver,Silence,Env = Env);
+  Load_Problem(Second_Objective=1 ,Solver= Solver,Silence= Silence,Env = Env);
 
   ################
   #    Reports   #
@@ -169,7 +169,7 @@ Optimize_Second_Objective<- function(Time_limit=1e7, Solver="SCIP", Silence= FAL
     julia_command("@objective(model, Min, Second_Objective);")
   }
 
-  Optimization<-.optimize(Time_limit);
+  Optimization<-.optimize(Time_limit= Time_limit,Skip_solution = 0);
   if(Optimization[["Gap"]]!=-1){
     Optimization[["Objective_Value"]]=julia_eval('objective_value(model)')}else{
       Optimization[["Result"]]="N/A";
@@ -206,7 +206,7 @@ Optimize_Second_Objective<- function(Time_limit=1e7, Solver="SCIP", Silence= FAL
   julia_assign('Gap',-1)
   julia_assign('Solution_time',-1)
   julia_command('Result_Status=fill(-1,N_Parcels);')
-  julia_command("optimize!(model);")
+  julia_command('optimize!(model)')
   julia_command('if termination_status(model) == MOI.OPTIMAL
         Optimization_status="OPTIMAL"
         Solution_time= solve_time(model)

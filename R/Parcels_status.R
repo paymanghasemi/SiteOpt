@@ -191,7 +191,7 @@ Parcels_Create <-
 
 
     Env$Parcels <- Parcels
-    Env$Status <- Status
+    Env$Status <- as.integer(Status)
 
     ################
     #    Reports   #

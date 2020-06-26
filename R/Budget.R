@@ -100,7 +100,7 @@ Budget_Add_Constraint <- function(Parcels, Coefficients, Limit, Silence=FALSE, E
   Env$Budget[[temp]] <- list()
   Env$Budget[[temp]][['Parcels']] <- as.character(Parcels)
   Env$Budget[[temp]][['Coefficients']] <- as.double(Coefficients)
-  Env$Budget[[temp]][['Limit']] <- Limit
+  Env$Budget[[temp]][['Limit']] <- as.double(Limit)
 
 
   ################
@@ -240,7 +240,7 @@ Budget_Import_Constraint <-
     Env$Budget[[temp]] <- list()
     Env$Budget[[temp]][['Parcels']] <- as.character(Data_names)
     Env$Budget[[temp]][['Coefficients']] <- as.double(Data_cost)
-    Env$Budget[[temp]][['Limit']] <- Limit
+    Env$Budget[[temp]][['Limit']] <- as.double(Limit)
 
 
     ################

@@ -95,7 +95,7 @@ Optimize_NBP<-function(First_Objective=0, Second_Objective=0, Risk_Objective=0, 
   ################
   #     Body     #
   ################
-  Load_Problem(First_Objective, Second_Objective, Risk_Objective, Solver, Silence, Env = Env);
+  Load_Problem(First_Objective= First_Objective,Second_Objective= Second_Objective,Risk_Objective= Risk_Objective, Solver= Solver,Silence= Silence, Env = Env);
   if(Silence==TRUE){
     julia_command('set_silent(model);')
   }
@@ -105,7 +105,7 @@ Optimize_NBP<-function(First_Objective=0, Second_Objective=0, Risk_Objective=0, 
   ################
   julia_assign("W",c(1,1));
 
-  Optimization<- .NBP_delegate(First_Objective,Second_Objective,Risk_Objective,Time_limit, Silence, Env= Env)
+  Optimization<- .NBP_delegate(First_power= First_Objective,Second_power= Second_Objective,Risk_power= Risk_Objective ,Time_limit =  Time_limit,Silence =  Silence, Env= Env)
 
   ################
   #    Reports   #
@@ -133,15 +133,15 @@ Optimize_NBP<-function(First_Objective=0, Second_Objective=0, Risk_Objective=0, 
   if(First_power==Second_power){
     if(Silence==FALSE){
       cat("First Objective and Second Objective.\n")}
-    return(.NBP_Optimizer(Name_1 = "First_Objective",Sense_1 = Env$First_Objective[["Sense"]],Name_2 = "Second_Objective", Sense_2 = Env$Second_Objective[["Sense"]], Time_limit))
+    return(.NBP_Optimizer(Name_1 = "First_Objective",Sense_1 = Env$First_Objective[["Sense"]],Name_2 = "Second_Objective", Sense_2 = Env$Second_Objective[["Sense"]], Time_limit= Time_limit))
   }else if(First_power==Risk_power){
     if(Silence==FALSE){
       cat("First Objective and Risk Objective.\n")}
-    return(.NBP_Optimizer(Name_1 = "First_Objective",Sense_1 = Env$First_Objective[["Sense"]],Name_2 = "Risk_Objective", Sense_2 = "Min", Time_limit))
+    return(.NBP_Optimizer(Name_1 = "First_Objective",Sense_1 = Env$First_Objective[["Sense"]],Name_2 = "Risk_Objective", Sense_2 = "Min",Time_limit= Time_limit))
   }else if(Second_power==Risk_power){
     if(Silence==FALSE){
       cat("Second Objective and Risk Objective.\n")}
-    return(.NBP_Optimizer(Name_1 = "Second_Objective",Sense_1 = Env$Second_Objective[["Sense"]],Name_2 = "Risk_Objective", Sense_2 = "Min", Time_limit))
+    return(.NBP_Optimizer(Name_1 = "Second_Objective",Sense_1 = Env$Second_Objective[["Sense"]],Name_2 = "Risk_Objective", Sense_2 = "Min",Time_limit= Time_limit))
   }
 }
 
