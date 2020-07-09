@@ -223,7 +223,7 @@ Optimize_Second_Objective<- function(Time_limit=1e7, Solver="SCIP", Silence= FAL
         Gap=MOI.get(model, MOI.RelativeGap())
         if Skip_solution==0
           for i=1:N_Parcels
-            global Result_Status[i]=value(Dict_Variables[i])
+            global Result_Status[i]=round(value(Dict_Variables[i]))
           end
         end
         else
