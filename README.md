@@ -39,6 +39,3 @@ After opening each link, a download button will appear at the top right corner o
                         https://usf.box.com/s/125flpzjwexfub8lqfsyuyxcf1ez4k0y 
 # Supporting and Citing
 
-The instances were generated as part of academic research. If you would like to help support it, please star the repository as such metrics may help us secure funding in the future. We would be grateful if you could cite:
-
-[Ghasemi Saghand, P., Charkhgard, H., A criterion Space Search Algorithm for Mixed Integer Linear Maximum Multiplicative Programs: A Multi-objective Optimization Approach]
