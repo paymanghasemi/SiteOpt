@@ -25,7 +25,7 @@ After opening each link, a download button will appear at the top right corner o
 
                 https://usf.box.com/s/8y4wodzpihuec0mihfr1zhswahonmd58 
 
-# Usage Guidelines (2 steps): 
+# Usage Guidelines (2 steps)
 
 1.  (**Mandatory**) Please download a simple example and watch its 3-min video through the following link in order to test SiteOpt: 
 
