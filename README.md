@@ -3,8 +3,7 @@
 
                https://github.com/paymanghasemi/SiteOpt/blob/master/SiteOpt%20Terms%20and%20Conditions.pdf
 
-# Dependencies
-Please refer to Figure 1 and Appendix A of the manuscript to see the dependencies of SiteOpt and their corresponding licenses.  
+ 
 # Installation Guidelines (3 steps)
 After opening each link, a download button will appear at the top right corner of the page.
 
