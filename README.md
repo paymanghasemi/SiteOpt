@@ -104,7 +104,7 @@ To load the SiteOpt in Rstudio as well as importing the example into Rstudio env
   <img src="images/Nash_Budget.jpg">
 </p>
 
-4.  **Scenario 4:** In this scenario, we optimize the First objective and the Nash bargaining solution by considering a spatial constraint in the problem in addition to the budget constraint. To load the spatial constraints from the excel file into the Rstudio environment and to find the optimal solutions, use the following code:
+4.  **Scenario 4:** In this scenario, we optimize the First objective and the Nash bargaining solution by considering a spatial constraint in the problem in addition to the budget constraint. Note that, since the budget constraint was defined in the previous scenario, it still exists in the RStudio's environment. To load the spatial constraints from the excel file into the Rstudio environment and to find the optimal solutions, use the following code:
 
 
           # Importing the information of connectivity constraints:
