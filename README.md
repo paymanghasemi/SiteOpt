@@ -41,7 +41,9 @@ After opening each link, a download button will appear at the top right corner o
 # Example
 We  demonstrate  application  of  SiteOpt in different scenarios using  a  representative  parcel  selection (reserve  design) problem  with  50  parcels. The following figure represents the current status of the parcels in our example.
 
-![Images](images/Initial.jpg)
+<p align="center">
+  <img src="images/Initial.jpg">
+</p>
 
 You can download the excel file of this example from the following link:
                 
@@ -49,13 +51,84 @@ You can download the excel file of this example from the following link:
                 
 To load the SiteOpt in Rstudio as well as to import the example into Rstudio environment, use the following code in Rstudio (assuming the example's excel file is in "E:\Folder\Example.xlsx") :
 
-              # Loading the SiteOpt library in R:
-              library(SiteOpt)
+          # Loading the SiteOpt library in R:
+          library(SiteOpt)
 
-              # Importing the information of Parcels, first objective function, and risk objective function:
-              SiteOpt::Import_data(Address = "E:\\Folder\\Example.xlsx",First_Objective_Sense = "Max")
+          # Importing the information of Parcels, first objective function, and risk objective function:
+          SiteOpt::Import_data(Address = "E:\\Folder\\Example.xlsx",First_Objective_Sense = "Max")
+
+1.  **Scenario 1:** In this scenario, there is no constraint and SiteOpt attempts to simply maximize the First objective. To do so, run the following code:
+              
+          # Optimizes the first objective function regarding its defined sense (MAX)
+          # The outcome of SiteOpt wil be stored in a list named Return
+          Return<-SiteOpt::Optimize_First_Objective(Solver = "SCIP")
+
+    The outcome of this scenario is trivial as SiteOpt will simply suggest to bring all parcels under protection. The result of SiteOpt for this scenario is shown in the           following image.
+
+<p align="center">
+  <img src="images/Return.jpg">
+</p>
+
+2.  **Scenario 2:** This scenario is similar to scenario 1, with the main difference being that SiteOpt considers the investment risk as the second objective function. 
+    This scenario attempts to find a Nash bargaining solution to balance the tradeoffs between maximizing the First objective and minimizing risk. The code for this scenario is:
+          
+          # The outcome of SiteOpt wil be stored in a list named Nash
+          Nash<-SiteOpt::Optimize_NBP(First_Objective = 1,Risk_Objective = 1,Solver = "SCIP")
+
+    Although this scenario does not involve any constraint, its outcome is not trivial as it is not clear how to balance the tradeoffs. The result is provided in the following image.
+
+<p align="center">
+  <img src="images/Nash.jpg">
+</p>
+
+3.  **Scenario 3:** In this scenario, we optimize the First objective by considering a budget limit in the problem. To load the budget constraint from the excel file into the Rstudio environment, use the following code:
 
 
+          # Importing the information of Budget constraint:
+          SiteOpt::Budget_Import_Constraint(Address = "E:\\Folder\\Example.xlsx",Sheet = "Budget")
+
+          # Optimize the First objective
+          Return_Budget<-SiteOpt::Optimize_First_Objective(Solver = "SCIP")
+          
+          # Find the Nash bargaining Solution
+          Nash_Budget<-SiteOpt::Optimize_NBP(First_Objective = 1,Risk_Objective = 1,Solver = "SCIP")
+          
+    Note that, as long as a constraint is in the RStudio's environemt, SiteOpt will automatically include its corresponding constraint in the problem. In order to exclude the constraint, you can attempt to remove it from the environment or change the name of the variable storing the constraint (refer to the manual). The result of optimizing the First objective given the budget constraint is provided in the following image.
+<p align="center">
+  <img src="images/Return_Budget.jpg">
+</p>
+        
+   The Nash optimal solution between the First objective and Risk objective given the budget constraint is provided in the following image.
+
+<p align="center">
+  <img src="images/Nash_Budget.jpg">
+</p>
+
+3.  **Scenario 4:** In this scenario, we optimize the First objective by considering a spatial constraint in the problem in addition to the budget constraint. To load the spatial constraints from the excel file into the Rstudio environment, use the following code:
+
+
+          # Importing the information of connectivity constraints:
+          SiteOpt::Connectivity_Import_Constraint(Address = "E:\\Folder\\Example.xlsx", Sheet = "Connectivity")
+
+          # Importing the information of disconnectivity constraints:
+          SiteOpt::Disconnectivity_Import_Constraint(Address = "E:\\Folder\\Example.xlsx", Sheet = "Disconnectivity")
+
+          # Optimize the First objective
+          Return_Budget_Spatial<-SiteOpt::Optimize_First_Objective(Solver = "SCIP")
+          
+          # Find the Nash bargaining Solution
+          Return_Budget_Spatial<-SiteOpt::Optimize_NBP(First_Objective = 1,Risk_Objective = 1,Solver = "SCIP")
+          
+    The result of optimizing the First objective given the budget and spatial constraints is provided in the following image.
+<p align="center">
+  <img src="images/Return_Budget_Spatial.jpg">
+</p>
+        
+   The Nash optimal solution between the First objective and Risk objective given the budget and spatial constraints is provided in the following image.
+
+<p align="center">
+  <img src="images/Nash_Budget_Spatial.jpg">
+</p>
 
 # Supporting and Citing
 
