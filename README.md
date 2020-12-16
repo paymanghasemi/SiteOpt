@@ -36,5 +36,26 @@ After opening each link, a download button will appear at the top right corner o
 2.  (Optional) Please download and read the user manual for further information: 
 
                 https://usf.box.com/s/125flpzjwexfub8lqfsyuyxcf1ez4k0y 
+                
+                
+# Example
+We  demonstrate  application  of  SiteOpt in different scenarios using  a  representative  parcel  selection (reserve  design) problem  with  50  parcels. The following figure represents the current status of the parcels in our example.
+
+![Images](images/Initial.jpg)
+
+You can download the excel file of this example from the following link:
+                
+                https://usf.box.com/s/ohp590atcs0hq127tx9m85tg4z7cb89n
+                
+To load the SiteOpt in Rstudio as well as to import the example into Rstudio environment, use the following code in Rstudio (assuming the example's excel file is in "E:\Folder\Example.xlsx") :
+
+              # Loading the SiteOpt library in R:
+              library(SiteOpt)
+
+              # Importing the information of Parcels, first objective function, and risk objective function:
+              SiteOpt::Import_data(Address = "E:\\Folder\\Example.xlsx",First_Objective_Sense = "Max")
+
+
+
 # Supporting and Citing
 
