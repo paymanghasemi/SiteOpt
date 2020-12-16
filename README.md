@@ -49,7 +49,7 @@ You can download the excel file of this example from the following link:
                 
                 https://usf.box.com/s/ohp590atcs0hq127tx9m85tg4z7cb89n
                 
-To load the SiteOpt in Rstudio as well as to import the example into Rstudio environment, use the following code in Rstudio (assuming the example's excel file is in "E:\Folder\Example.xlsx") :
+To load the SiteOpt in Rstudio as well as importing the example into Rstudio environment, use the following code in Rstudio (assuming the example's excel file is in "E:\Folder\Example.xlsx") :
 
           # Loading the SiteOpt library in R:
           library(SiteOpt)
