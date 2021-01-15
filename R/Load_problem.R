@@ -219,12 +219,20 @@ Load_Problem<-function(First_Objective=0, Second_Objective=0, Risk_Objective=0, 
 
 .First_objective_creator<-function(Env){
   julia_assign("First_Objective_Coefficients",as.double(Env$First_Objective[["Coefficients"]]))
-  julia_command(" First_Objective=@expression(model, sum(First_Objective_Coefficients[i]*Dict_Variables[i] for i=1:N_Parcels ));")
+  if(Env$First_Objective[["Sense"]]=="Max"){
+      julia_command(" First_Objective=@expression(model, sum(First_Objective_Coefficients[i]*Dict_Variables[i] for i=1:N_Parcels ));")
+  }else if(Env$First_Objective[["Sense"]]=="Min"){
+      julia_command(" First_Objective=@expression(model, sum(First_Objective_Coefficients[i]*(Dict_Variables[i]-Parcel_Status[i]) for i=1:N_Parcels ));")
+  }
 }
 
 .Second_objective_creator<-function(Env){
   julia_assign("Second_Objective_Coefficients",as.double(Env$Second_Objective[["Coefficients"]]))
+  if(Env$Second_Objective[["Sense"]]=="Max"){
   julia_command(" Second_Objective=@expression(model, sum(Second_Objective_Coefficients[i]*Dict_Variables[i] for i=1:N_Parcels ));")
+  }else if(Env$Second_Objective[["Sense"]]=="Min"){
+    julia_command(" Second_Objective=@expression(model, sum(Second_Objective_Coefficients[i]*(Dict_Variables[i]-Parcel_Status[i]) for i=1:N_Parcels ));")
+  }
 }
 
 .Risk_objective_creator<-function(Env){
