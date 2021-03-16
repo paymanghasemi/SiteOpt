@@ -7,11 +7,11 @@
 # Installation Guidelines (3 steps)
 After opening each link, a download button will appear at the top right corner of the page.
 
-1.  (**Mandatory**) Please read the installation PDF file::
+1.  (**Mandatory**) Please read the following installation PDF file:
 
               https://github.com/paymanghasemi/SiteOpt/blob/master/Installation.pdf
      
-       or watch the 8-min installation video (to install SiteOpt through RStudio):: 
+       or watch the 8-min installation video (to install SiteOpt through RStudio):
 
                https://usf.box.com/s/5b167q17sxe0m9hmcozzf3es9wdpcmri 
 
