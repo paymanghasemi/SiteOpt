@@ -7,7 +7,7 @@
 # Installation Guidelines (3 steps)
 After opening each link, a download button will appear at the top right corner of the page.
 
-1.  (**Mandatory**) Please watch the 8-min installation video (to install SiteOpt through RStudio): 
+1.  (**Mandatory**) Please read the installation PDF fil, or watch the 8-min installation video (to install SiteOpt through RStudio):: 
 
                https://usf.box.com/s/5b167q17sxe0m9hmcozzf3es9wdpcmri 
 
