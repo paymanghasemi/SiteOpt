@@ -136,3 +136,4 @@ To load the SiteOpt in Rstudio as well as importing the example into Rstudio env
 
 # Supporting and Citing
 
+Ghasemi Saghand, P., Haider, Z., Charkhgard, H., Eaton, M., Martin, J., Yurek, S., Udell, B. J. (2021),  SiteOpt: an Open-source R-package for Site Selection and Portfolio Optimization. Ecography, minor revision.
