@@ -58,6 +58,8 @@ We  demonstrate  application  of  SiteOpt in different scenarios.
 <p align="center">
   <img src="images/Initial.jpg">
 </p>
+We mention that the investment and divestment will be done automatically in SiteOpt. This implies that if decision makers do not want to make any changes in a given parcel, then they should exclude the parcel from the data file. As soon as, a parcel is included in the data, SiteOpt can choose to divest it (if its current status is protected) or invest on it (if its current status is unprotected). Note that the result of SiteOpt is the optimal status for the parcels, i.e. whether they should be protected or not, and in order to realize the investments or divestments, users need to compare the initial status of the parcels with the resulted ones. In this case, investment means that the parcel was unprotected initially and it is protected in the optimal result, and divestment means that the parcel was protected initially and it is unprotected in the optimal result.
+
 
 You can download the excel file of this example from the following link:
                 
