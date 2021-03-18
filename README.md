@@ -53,7 +53,7 @@ We  demonstrate  application  of  SiteOpt in different scenarios.
 
                 https://usf.box.com/s/khn18htjxbhkra69jrrr9bvncl7nkwol
 
-**50 Parcels Problem** We now solve the problem provided in Section C of the paper. The following figure represents the current status of the parcels in our example.
+**50 Parcels Problem** We now solve the problem provided in Appendix C of the paper. The following figure represents the current status of the parcels in our example.
 
 <p align="center">
   <img src="images/Initial.jpg">
