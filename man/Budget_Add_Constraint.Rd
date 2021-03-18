@@ -7,7 +7,7 @@
 Budget_Add_Constraint(Parcels, Coefficients, Limit, Silence=FALSE, Env= .GlobalEnv)
 }
 \arguments{
-\item{Parcels}{A vector of strings: the name of the parcels appearing in the constraint.}
+\item{Parcels}{A vector of strings: the name of the parcels appearing in the constraint. The package will automatically differentiate protected from unprotected parcels.}
 
 \item{Coefficients}{A vector of doubles: the respective coefficients of the parcels in \code{Parcels}.}
 
@@ -23,8 +23,9 @@ NULL (creates some variables in the environment but returns nothing)
 }
 \description{
 \code{Budget_Add_Constraint} creates a Budget Constraint in the optimization model of the form:\cr
-\eqn{Coefficients . Parcels \le Limit}\cr
-where \code{Coefficients} is a vector of doubles, \code{Parcels} is the vector of parcel names, and  \code{Limit} is a double representing the budget limit.
+\if{html}{\figure{Budget_constraint.jpg}{}}
+\if{latex}{\figure{Budget_constraint.jpg}{options: width=2.0in}}\cr
+where \eqn{B} and \eqn{S} are respectively the set of initially protected and unprotected parcels, and \code{C} is the budget limit.
 }
 \details{
 When used for the first time, \code{Budget_Add_Constraint} or \link{Budget_Import_Constraint} will create a list named \code{Budget} in the environment.
