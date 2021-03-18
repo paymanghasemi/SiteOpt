@@ -1,4 +1,4 @@
-# SiteOpt: an Open-source R-package for Site Selection and Portfolio Optimization
+# SiteOpt v1.0.0: an Open-source R-package for Site Selection and Portfolio Optimization
 **License**:  SiteOpt is an open source package and it is free for noncommercial use/research 
 
                https://github.com/paymanghasemi/SiteOpt/blob/master/SiteOpt%20Terms%20and%20Conditions.pdf
