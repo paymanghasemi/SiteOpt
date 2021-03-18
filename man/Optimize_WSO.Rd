@@ -31,7 +31,8 @@ A list with 8 members:\cr
 \verb{[["Solution_time"]]}: a numeric value; defining the time spent in the solver in seconds.\cr
 \verb{[["Status"]]}: a character; defining the status of the solution.\cr
 \verb{[["Gap"]]}: a numeric value; defining the relative optimality gap of the solution.\cr
-\verb{[["Result"]]}: a vector of binaries; its \code{i}'th element defines if the parcel named \code{Parcels[i]} is protected or not.\cr
+\verb{[["Result"]]}: a vector of binaries; its \code{i}'th element defines if the parcel named \code{Parcels[i]} is protected or not. Comparing these values with the values of \code{Status} defined when creating the problem,
+the user can find which parcels are to be invested, divested, or remain the same.\cr
 \verb{[["Firs_Objective"]]}: a numveric value; (if applicable) returns the WSO value of first objective.\cr
 \verb{[["Second_Objective"]]}: a numveric value; (if applicable) returns the WSO value of second objective.\cr
 \verb{[["Risk_Objective"]]}: a numveric value; (if applicable) returns the WSO value of risk objective.\cr
