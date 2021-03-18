@@ -45,11 +45,11 @@ After opening each link, a download button will appear at the top right corner o
 # Example
 We  demonstrate  application  of  SiteOpt in different scenarios.
 
-**Minimum Set Covering**: In the following script, we create and solve a random instance for the Minimum Set Covering problem defined in Section A.1.1 in Appendix of the paper.
+**Minimum Set Covering**: In the following script, we create and solve a random instance for the Minimum Set Covering problem defined in Section A.1.1 in Appendix A of the paper.
                 
                 https://usf.box.com/s/ljochmkq3afu1g805a5piayn2fvcjgxx
 
-**Maximum Set Covering**: In the following script, we create and solve a random instance for the Maximum Set Covering problem defined in Section A.1.1 in Appendix of the paper.
+**Maximum Set Covering**: In the following script, we create and solve a random instance for the Maximum Set Covering problem defined in Section A.1.1 in Appendix A of the paper.
 
                 https://usf.box.com/s/khn18htjxbhkra69jrrr9bvncl7nkwol
 
