@@ -8,7 +8,7 @@ Add_Constraint(Parcels, Coefficients, RHS,
                       Silence=FALSE, Env= .GlobalEnv)
 }
 \arguments{
-\item{Parcels}{A vector of strings: the name of the parcels to appear in the constraint.}
+\item{Parcels}{A vector of strings: the name of the parcels to appear in the constraint. The package will automatically differentiate protected from unprotected parcels.}
 
 \item{Coefficients}{A vector of doubles: the respective coefficients of the \code{Parcels}.}
 
@@ -24,8 +24,9 @@ NULL (creates some variables in the environment but returns nothing)
 }
 \description{
 \code{Add_Constraint} creates a Constraint in the optimization model of the form:\cr
-\eqn{Coefficients . Parcels \le RHS},\cr
-where \code{Coefficients} is a vector of doubles, \code{Parcels} is the vector of parcel names, and  \code{RHS} is a double representing the right-hand-side value of the constraint.
+\if{html}{\figure{Constraint.jpg}{}}
+\if{latex}{\figure{Constraint.jpg}{options: width=2.0in}}\cr
+where \eqn{B} and \eqn{S} are respectively the set of initially protected and unprotected parcels, and \code{b} is the right-hand-side of the constraint.
 }
 \details{
 When used for the first time, \code{Add_Constraint} will create a list named \code{Constraints}.
