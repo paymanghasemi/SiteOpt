@@ -43,7 +43,17 @@ After opening each link, a download button will appear at the top right corner o
                 
                 
 # Example
-We  demonstrate  application  of  SiteOpt in different scenarios using  a  representative  parcel  selection (reserve  design) problem  with  50  parcels. The following figure represents the current status of the parcels in our example.
+We  demonstrate  application  of  SiteOpt in different scenarios.
+
+**Minimum Set Covering**: In the following script, we create and solve a random instance for the Minimum Set Covering problem defined in Section A.1.1 in Appendix of the paper.
+                
+                https://usf.box.com/s/ljochmkq3afu1g805a5piayn2fvcjgxx
+
+**Maximum Set Covering**: In the following script, we create and solve a random instance for the Maximum Set Covering problem defined in Section A.1.1 in Appendix of the paper.
+
+                https://usf.box.com/s/khn18htjxbhkra69jrrr9bvncl7nkwol
+
+**50 Parcels Problem** We now solve the problem provided in Section C of the paper. The following figure represents the current status of the parcels in our example.
 
 <p align="center">
   <img src="images/Initial.jpg">
