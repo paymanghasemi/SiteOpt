@@ -133,7 +133,7 @@ To load the SiteOpt in Rstudio as well as importing the example into Rstudio env
           Return_Budget_Spatial<-SiteOpt::Optimize_First_Objective(Solver = "SCIP")
           
           # Find the Nash bargaining Solution
-          Return_Budget_Spatial<-SiteOpt::Optimize_NBP(First_Objective = 1,Risk_Objective = 1,Solver = "SCIP")
+          Nash_Budget_Spatial<-SiteOpt::Optimize_NBP(First_Objective = 1,Risk_Objective = 1,Solver = "SCIP")
           
     The result of optimizing the First objective given the budget and spatial constraints is provided in the following image.
 <p align="center">
