@@ -20,7 +20,7 @@ Setup <- function(){
   }
   julia <- julia_setup()
   julia_command("import Pkg")
-  julia_command('Pkg.add(Pkg.PackageSpec(;name="JuMP", version="0.21"))')
+  julia_command('Pkg.add(Pkg.PackageSpec(;name="JuMP", version="0.21.0"))')
   julia_command('Pkg.add(Pkg.PackageSpec(;name="SCIP", version="0.9.3"))')
   julia_command('Pkg.build("SCIP");')
   julia_library("JuMP")
